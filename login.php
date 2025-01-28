@@ -4,7 +4,7 @@ include('conexao.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $email = $_POST['email'];
-    $senha = md5($_POST['senha']);
+    $senha = ($_POST['senha']);
 
     $sql = "SELECT * FROM usuarios WHERE email='$email' AND senha='$senha'";
     $result = $conn->query($sql);
@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="login.css">
 </head>
 <body>
     <div class="container" style="width: 400px;">
@@ -35,7 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="senha">Senha:</label>
         <input type="password" name="senha" required>
         <button type="submit" style="margin-bottom: 30px;">Entrar</button>
-        <?php if (isset($error)) echo "<p class='message error'>$error</p>"; ?>
+        <?php if (isset($error)) echo "<p class='messageerror'>$error</p>"; ?>
     </form>
     </div> 
 </body>
